@@ -31,10 +31,6 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 			<!--引入数据源-->
 			<property name="dataSource" ref="dataSource" />
-			<!--给包指定别名-->
-			<property name="typeAliasesPackage" value= "com.bjpowernode.blog.back.bean" />
-			<!--导入映射文件-->
-		    <property name="mapperLocations" value="classpath:mappers/*Mapper.xml" />
         <!--导入SqlMapConfig.xml:就是为了打印sql-->
         <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
 
@@ -59,9 +55,7 @@
 		<!--查找SqlsessionFactory-->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 		<!--扫描mapper接口包-->
-		<property name="basePackage"
-                  value="com.xqr.blog.back.mapper,
-com.xqr.blog.fore.mapper" />
+		<property name="basePackage" value="com.xqr.blog.back.mapper"/>
 	</bean>
 
 </beans>

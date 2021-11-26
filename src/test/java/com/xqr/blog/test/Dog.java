@@ -1,4 +1,4 @@
-package com.xqr.test;
+package com.xqr.blog.test;
 
 import lombok.Data;
 
