@@ -1,12 +1,17 @@
 package com.xqr.blog.back.bean;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.NameStyle;
+import tk.mybatis.mapper.code.Style;
 
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
 @Table(name="t_article")
+@NameStyle(Style.normal)
 public class Article {
+    @Id
     private String aid;
     private String title;
     private String digest;
