@@ -7,9 +7,11 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.List;
+
 public class TestBlog {
 
-    private BeanFactory beanFactory=new ClassPathXmlApplicationContext("spring/applicationContext.xml");
+    private BeanFactory beanFactory =new ClassPathXmlApplicationContext("spring/applicationContext.xml");
     private ArticleMapper articleMapperMapper = (ArticleMapper) beanFactory.getBean("articleMapper");
     //添加
 
@@ -52,6 +54,7 @@ public class TestBlog {
         * 1.条件只能封装在对象中
         * 2.只能做等值的条件
         * */
+
        /* Article article=new Article();
         article.setAid("70");
         articleMapperMapper.delete(article);*/
@@ -61,6 +64,32 @@ public class TestBlog {
         example.createCriteria()
                 .andGreaterThanOrEqualTo("aid","70");
         articleMapperMapper.deleteByExample(example);
+
+    }
+    //查询测试
+    @Test
+    public void test04(){
+       /*Article article =new Article();
+        1.主键查询
+        article.setAid("59");
+        List<Article> article01= articleMapperMapper.select(article);
+        System.out.println(article01);*/
+
+        //2.查询所有
+        /*List<Article> article02 = articleMapperMapper.selectAll();
+        System.out.println(article02);*/
+
+        //3.模糊查询
+        //_:一个字符，%：0-n个字符，创建时间大于2021-01-13的文章
+        //需求：查询title中包含学习
+        Example example = new Example(Article.class);
+        String title="学习";
+        String create_time="2021-01-13";
+        example.createCriteria()
+                .andLike("title","%"+title+"%")
+                .andGreaterThan("create_time",create_time);
+        List<Article> articles = articleMapperMapper.selectByExample(example);
+        System.out.println(articles);
 
     }
 }
