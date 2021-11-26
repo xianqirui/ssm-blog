@@ -42,4 +42,25 @@ public class TestBlog {
         criteria.andEqualTo("cid", cid).andEqualTo("aid",71);
         articleMapperMapper.updateByExampleSelective(article,example);
     }
+    //删除操作
+    @Test
+    public void test03(){
+        //根据主键删除
+        //articleMapperMapper.deleteByPrimaryKey("71");
+
+        /*
+        * 1.条件只能封装在对象中
+        * 2.只能做等值的条件
+        * */
+       /* Article article=new Article();
+        article.setAid("70");
+        articleMapperMapper.delete(article);*/
+
+        //
+        Example example = new Example(Article.class);
+        example.createCriteria()
+                .andGreaterThanOrEqualTo("aid","70");
+        articleMapperMapper.deleteByExample(example);
+
+    }
 }
