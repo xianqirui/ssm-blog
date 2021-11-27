@@ -103,10 +103,10 @@
         <table class="table table-striped table-hover">
           <tbody>
             <tr>
-              <td>登录者: <span>${user.nickname}</span>，这是您第 <span>${user.loginCount}</span> 次登录</td>
+              <td>登录者: <span>${sessionScope.user.nickname}</span>，这是您第 <span>${sessionScope.user.logincount}</span> 次登录</td>
             </tr>
             <tr>
-              <td>上次登录时间: ${user.lastLoginTime} , 上次登录IP: ${user.loginIp}</td>
+              <td>上次登录时间: ${sessionScope.user.lastLoginTime} , 上次登录IP: ${sessionScope.user.loginIp}</td>
             </tr>
           </tbody>
         </table>

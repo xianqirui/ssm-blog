@@ -23,7 +23,6 @@ function updateUser() {
                 //setTimeout:隔多长时间执行指定代码
                 location.href = "/blog/login.jsp";
             },1000);
-
         }
     },'json');
 }
