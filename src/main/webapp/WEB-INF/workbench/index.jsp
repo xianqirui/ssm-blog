@@ -44,7 +44,7 @@
   <div class="row">
     <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="index.html">报告</a></li>
+        <li class="active"><a href="index.jsp">报告</a></li>
       </ul>
       <ul class="nav nav-sidebar">
         <li><a href="/blog/toView/workbench/article/index">文章</a></li>
