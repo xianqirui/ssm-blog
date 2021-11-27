@@ -2,6 +2,8 @@ package com.xqr.blog.test;
 
 import com.xqr.blog.back.bean.Article;
 import com.xqr.blog.back.mapper.ArticleMapper;
+import com.xqr.blog.base.exception.BlogEnum;
+import com.xqr.blog.base.exception.BlogException;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -91,5 +93,15 @@ public class TestBlog {
         List<Article> articles = articleMapperMapper.selectByExample(example);
         System.out.println(articles);
 
+    }
+    //测试自定义异常
+    @Test
+    public void test05(){
+        int a=0;
+        try {
+            throw new BlogException(BlogEnum.USER_LOGIN_CODE);
+        }catch (BlogException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
