@@ -303,6 +303,7 @@
 <script src="/blog/js/ajaxfileupload.js"></script>
 
 <script>
+  //上传文章图片
     var editor;
     $(function() {
         editor = editormd("test-editor", {
