@@ -341,33 +341,33 @@
 
 
 
-  /*
+
       //点击搜索按钮，模糊查询文章数据
       $('#search').click(function () {
           refresh(1,3);
       });
 
-      //定义改变是否公开函数
-      function change(aid,value) {
-         $.get("/blog/article/isOpen",{
-             'aid' : aid,
-             'isOpen' : value
-         },function (data) {
-             layer.alert(data.mess, {icon:6});
-         },'json');
-      }
-
-      //异步删除文章信息
-      function deleteById(aid) {
-         $.get("/blog/article/deleteById",{'id':aid},function (data) {
-             if(data.ok){
-                 //删除成功
-                 layer.alert(data.mess, {icon:6});
-                 //刷新页面
-                 refresh(1,3);
-             }
-         },'json');
-      }*/
+        //定义改变是否公开函数
+        function change(aid,value) {
+           $.get("/blog/article/isOpen",{
+               'aid' : aid,
+               'isOpen' : value
+           },function (data) {
+               layer.alert(data.mess, {icon:6});
+           },'json');
+        }
+  /*
+          //异步删除文章信息
+          function deleteById(aid) {
+             $.get("/blog/article/deleteById",{'id':aid},function (data) {
+                 if(data.ok){
+                     //删除成功
+                     layer.alert(data.mess, {icon:6});
+                     //刷新页面
+                     refresh(1,3);
+                 }
+             },'json');
+          }*/
 </script>
 </body>
 </html>

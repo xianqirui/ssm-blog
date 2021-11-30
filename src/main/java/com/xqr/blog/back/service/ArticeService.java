@@ -5,5 +5,7 @@ import com.xqr.blog.back.bean.Article;
 import java.util.List;
 
 public interface ArticeService {
-    List<Article> list();
+    List<Article> list(String uid,String title);
+
+    void isOpen(Article article);
 }
