@@ -48,4 +48,10 @@ public class ArticeServiceImpl implements ArticeService {
             throw new BlogException(BlogEnum.USER_LOGIN_CODE);
         }
     }
+
+    @Override
+    public List<Category> queryCategory() {
+
+        return categoryMapper.selectAll();
+    }
 }

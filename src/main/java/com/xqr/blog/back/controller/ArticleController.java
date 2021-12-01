@@ -3,6 +3,7 @@ package com.xqr.blog.back.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xqr.blog.back.bean.Article;
+import com.xqr.blog.back.bean.Category;
 import com.xqr.blog.back.bean.User;
 import com.xqr.blog.back.service.ArticeService;
 import com.xqr.blog.base.bean.ResultVo;
@@ -50,5 +51,12 @@ public class ArticleController {
             resultVo.setMess(e.getMessage());
         }
         return resultVo;
+    }
+    //异步查询所有栏目
+    @RequestMapping("/article/queryCategory")
+    @ResponseBody
+    public List<Category> queryCategory(){
+        List<Category> categories=articeService.queryCategory();
+        return categories;
     }
 }
