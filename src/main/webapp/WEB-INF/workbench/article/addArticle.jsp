@@ -380,9 +380,9 @@
         });
         //join方法:把数组中的内容默认以,号的分割符把数组内容拼接成字符串
         var tagNames = tags.join();
-
+        //alert($('#categories').val())
        $.post("/blog/article/saveOrUpdate",{
-            'cid' : $('#categories:selected').val(),
+            'cid' : $('#categories').val(),
             'tagNames' : tagNames,
             'title' : $('#title').val(),
             'digest' : $('#digest').val(),
@@ -397,7 +397,8 @@
                 $('#state').text("已发布");
                 $('#punishTime').val(data.t.create_time);
                 //跳转到文章列表页面
-                location.href = "/blog/toView/workbench/article/index";
+                //location.href = "/blog/toView/workbench/article/index";
+                 location.href = "/blog/toView/workbench/article/index";
             }
         },'json');
     }

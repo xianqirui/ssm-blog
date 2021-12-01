@@ -10,6 +10,7 @@ import com.xqr.blog.back.service.ArticeService;
 import com.xqr.blog.base.bean.ResultVo;
 import com.xqr.blog.base.exception.BlogException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,12 +27,12 @@ public class ArticleController {
     @RequestMapping("/article/list")
     @ResponseBody
     public PageInfo<Article> list(int page, int pageSize, String title, HttpSession session){
-        //获取当前用户
+        //获取当前登录用户
         User user = (User) session.getAttribute("user");
-        //参数1：当前页码；参数2：每页个数
+        //参数1:当前页码 参数2:每页记录数 pageSize 该方法等同于 limit a,b
         PageHelper.startPage(page,pageSize);
-        List<Article> articles=articeService.list(user.getUid(),title);
-        PageInfo<Article> pageInfo=new PageInfo<>(articles);
+        List<Article> articles = articeService.list(user.getUid(),title);
+        PageInfo<Article> pageInfo = new PageInfo<>(articles);
         return pageInfo;
     }
 
@@ -60,11 +61,55 @@ public class ArticleController {
         List<Category> categories=articeService.queryCategory();
         return categories;
     }
-    //查询标签
+    //查询栏目下的标签
     @RequestMapping("/article/queryTags")
     @ResponseBody
     public List<Tag> queryTags(String cid){
         List<Tag> tags=articeService.queryTags(cid);
         return tags;
+    }
+    //异步发布文章
+    @RequestMapping("/article/saveOrUpdate")
+    @ResponseBody
+    public ResultVo addAndUpdate(Article article,HttpSession session){
+        ResultVo resultVo = new ResultVo();
+        try {
+            //获取登录用户
+            User user = (User) session.getAttribute("user");
+            article.setUid(user.getUid());
+            article=articeService.saveOrUpdate(article);
+            resultVo.setOk(true);
+            if(article.getAid()==null){
+                resultVo.setMess("发布文章成功");
+            }else{
+                resultVo.setMess("修改文章成功");
+            }
+
+            resultVo.setT(article);
+        }catch (BlogException e){
+            resultVo.setMess(e.getMessage());
+        }
+        return resultVo;
+    }
+    //异步查询文章信息
+    @RequestMapping("/article/queryById")
+    @ResponseBody
+    public Article queryById(String id){
+        Article article=articeService.queryById(id);
+        return article;
+    }
+    //异步删除文章
+    @RequestMapping("/article/deleteById")
+    @ResponseBody
+    public ResultVo deleteById(String id){
+        ResultVo resultVo = new ResultVo();
+        try {
+            articeService.deleteById(id);
+            resultVo.setOk(true);
+            resultVo.setMess("文章已删除");
+        }catch (BlogException e){
+            resultVo.setMess(e.getMessage());
+        }
+        return resultVo;
     }
 }

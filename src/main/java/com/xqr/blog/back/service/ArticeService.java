@@ -13,4 +13,10 @@ public interface ArticeService {
     List<Category> queryCategory();
 
     List<Tag> queryTags(String cid);
+
+    Article saveOrUpdate(Article article);
+
+    Article queryById(String id);
+
+    void deleteById(String id);
 }

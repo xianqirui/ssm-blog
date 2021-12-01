@@ -6,7 +6,10 @@ public enum BlogEnum {
     USER_LOGIN_ACCOUNT("001-002","用户名或者密码错误"),
     USER_UPDATE_PASSWORD("001-003","输入就密码错误"),
     USER_UPDATE("001-004","输入的旧密码错误"),
-    ARTICLE_ISOPEN("002-001","修改文章是否公开失败");
+    ARTICLE_ISOPEN("002-001","修改文章是否公开失败"),
+    ARTICLE_PUNISH("002-002","发布文章失败"),
+    ARTICLE_UPDATA("002-003","修改文章失败"),
+    ARTICLE_DELETE("002-003","删除文章失败");
 
 
     private String typeCode;//哪个模块下的操作错误

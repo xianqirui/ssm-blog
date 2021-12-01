@@ -34,7 +34,7 @@ public class FileUploadUtil {
                 //定义用于给Editormd返回的map数据
                 HashMap<String,Object> map = new HashMap<>();
                 //过去图片路径
-                String url="http://localhost:8080/blog/upload"+DateTimeUtil.getDate()
+                String url="http://localhost:8080/blog/upload/"+DateTimeUtil.getDate()
                         +File.separator+user.getUsername()+File.separator+filename;
                 try {
                         img.transferTo(new File(realPath+File.separator+filename));
