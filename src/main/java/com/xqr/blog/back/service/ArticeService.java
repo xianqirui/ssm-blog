@@ -2,6 +2,7 @@ package com.xqr.blog.back.service;
 
 import com.xqr.blog.back.bean.Article;
 import com.xqr.blog.back.bean.Category;
+import com.xqr.blog.back.bean.Tag;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface ArticeService {
 
     void isOpen(Article article);
     List<Category> queryCategory();
+
+    List<Tag> queryTags(String cid);
 }

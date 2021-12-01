@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xqr.blog.back.bean.Article;
 import com.xqr.blog.back.bean.Category;
+import com.xqr.blog.back.bean.Tag;
 import com.xqr.blog.back.bean.User;
 import com.xqr.blog.back.service.ArticeService;
 import com.xqr.blog.base.bean.ResultVo;
@@ -58,5 +59,12 @@ public class ArticleController {
     public List<Category> queryCategory(){
         List<Category> categories=articeService.queryCategory();
         return categories;
+    }
+    //查询标签
+    @RequestMapping("/article/queryTags")
+    @ResponseBody
+    public List<Tag> queryTags(String cid){
+        List<Tag> tags=articeService.queryTags(cid);
+        return tags;
     }
 }

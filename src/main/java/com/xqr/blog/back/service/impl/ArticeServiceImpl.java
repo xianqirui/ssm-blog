@@ -2,8 +2,10 @@ package com.xqr.blog.back.service.impl;
 
 import com.xqr.blog.back.bean.Article;
 import com.xqr.blog.back.bean.Category;
+import com.xqr.blog.back.bean.Tag;
 import com.xqr.blog.back.mapper.ArticleMapper;
 import com.xqr.blog.back.mapper.CategoryMapper;
+import com.xqr.blog.back.mapper.TagMapper;
 import com.xqr.blog.back.service.ArticeService;
 import com.xqr.blog.base.exception.BlogEnum;
 import com.xqr.blog.base.exception.BlogException;
@@ -20,6 +22,8 @@ public class ArticeServiceImpl implements ArticeService {
 
     @Resource
     private CategoryMapper categoryMapper;
+    @Resource
+    private TagMapper tagMapper;
 
     @Override
     public List<Article> list(String uid,String title) {
@@ -53,5 +57,12 @@ public class ArticeServiceImpl implements ArticeService {
     public List<Category> queryCategory() {
 
         return categoryMapper.selectAll();
+    }
+
+    @Override
+    public List<Tag> queryTags(String cid) {
+        Tag tag=new Tag();
+        tag.setCid(cid);
+        return tagMapper.select(tag);
     }
 }
